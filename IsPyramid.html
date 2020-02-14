@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>IsPyramid</title>
+</head>
+
+<body>
+    <div class="jumbotron">
+        <h1 class="display-4">Pyramid Word</h1>
+        <p class="lead">Is your word a pyramid word?</p>
+        <hr class="my-4">
+            <input type=text id= "word" placeholder="Enter word here ...">
+            <button class="btn btn-primary btn-sm" onclick="isPyramid()">Submit</button>
+        <p id="answer"></p>
+    </div>
+
+    <!-- javascript script -->
+    <script>
+
+        function isPyramid() {
+            var str = document.getElementById("word").value;
+            var answer = document.getElementById("answer");
+            var word = new Object;
+            var newArr = [];
+            
+            for (var i = 0; i < str.length; i++) {
+                var x = str.charAt(i);
+                word[x] = (isNaN(word[x]) ? 1 : word[x] + 1);
+            }
+            for (key in word) {
+                newArr.push(word[key]);
+                newArr.sort((a, b) => a - b);
+            }
+            if(newArr[0] != 1){
+                res = "False!";
+            }
+            for (var j = 0; j < newArr.length; j++) {
+                if (newArr[1] === 2 && newArr[j + 1] == newArr[j] +1) {
+                    res = "True!";
+                    break;
+                    }
+                else {
+                    res = "False!";
+                    }
+                }
+
+            answer.innerHTML = res;
+        }
+
+    </script>
+
+</body>
+
+</html>
